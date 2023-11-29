@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Elizaveta Lapiga" />
+
+
+<title>Homework 7</title>
+
+<script src="H7_files/header-attrs-2.25/header-attrs.js"></script>
+<script src="H7_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="H7_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="H7_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="H7_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="H7_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="H7_files/navigation-1.1/tabsets.js"></script>
+<link href="H7_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="H7_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Homework 7</h1>
+<h4 class="author">Elizaveta Lapiga</h4>
+<h4 class="date">29/11/2023</h4>
+
+</div>
+
+
+<style>
+body {
+text-align: justify}
+</style>
+<div id="task" class="section level2">
+<h2>Task:</h2>
+<p>Consider a scheme similar to Homework 3. First of all realize that the general scheme that you used so far (random walk and also Poisson process, etc.), can, more in general, be used for any stochastic differential equations SDE (see, for instance, Euler–Maruyama method <a href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method" class="uri">https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method</a>). In other words, with minor additions to your program you can now generalize this tool to simulate almost any stochastic differential equations of interest for many applications. Create a web only version where you allow the user to explore (selectable by user) any useful stochastic process. Do a research on the web and include any SDE that you think is interesting. Some examples of popular processes:</p>
+<ul>
+<li>Arithmetic Brownian</li>
+<li>Geometric Brownian (Black–Scholes)</li>
+<li>Ornstein–Uhlenbeck (mean-reverting)</li>
+<li>Vasicek</li>
+<li>Hull–White</li>
+<li>Cox–Ingersoll–Ross</li>
+<li>Black–Karasinski</li>
+<li>Heston</li>
+<li>Chen model</li>
+<li>[… any other interesting …]</li>
+</ul>
+<p>Optional (+1 grade): Compare also with other possible simulation schemes which have been proposed eg, Milstein, Runge-Kutta, Heun’s, …), pointing out possible differences.</p>
+<p>Optional (+2 grade): Allow the user to input manually an SDE (on-the-fly compilation) and simulate that.</p>
+</div>
+<div id="introduction-to-the-solution-and-some-theoretical-research" class="section level2">
+<h2>Introduction to the solution and some theoretical research</h2>
+<p>It is useful to start from the scheme proposed in <a href="https://elapigastudy6.wordpress.com/2023/10/25/homework-%e2%84%963/">Homework 3</a>, and further analysed in <a href="https://elapigastudy6.wordpress.com/2023/11/01/homework-%e2%84%964/">Homework 4</a>, <a href="https://elapigastudy6.wordpress.com/2023/11/05/homework-%e2%84%965/">Homework 5</a> and <a href="https://elapigastudy6.wordpress.com/2023/11/15/homework-%e2%84%966/">Homework 6</a>. Focusing just on the “security” score function <span class="math inline">\(S\)</span>, which was incremented by 1 when the system was protected and reduced by 1 when it was penetrated, we can write it referring to a <em>discrete</em> time variable <span class="math inline">\(t \in \{0,1,2,...\}\)</span> as</p>
+<p><span class="math display">\[S_t = S_{t-1} + 1 - 2B_t,\]</span> <span class="math display">\[S_0 = 0\]</span> where all the <span class="math inline">\(B_t\)</span> are independent bernoulli random variable with probability parameter <span class="math inline">\(p\)</span>, each one equal to 1 if the system has been penetrated at time <span class="math inline">\(t\)</span>, and equal to 0 otherwise. <span class="math inline">\(S\)</span> is an example of <em>discrete stochastic process</em>, i.e. a discrete function of thime whose variation is itself a random variable: in this case, the variation is of course <span class="math display">\[ S_{t} - S_{t-1} = 1 - 2B_t\]</span> <em>Stochastic differential equations</em> (SDE) have a similar structure to the very simple equation above, with two crucial differences: they define <em>continuous time stochatic processes</em> <span class="math inline">\(X_t\)</span>, where <span class="math inline">\(t \in [0,+\infty)\)</span>, and they are, classically, defined through the <em>Brownian motion</em> (see <a href="https://en.wikipedia.org/wiki/Brownian_motion" class="uri">https://en.wikipedia.org/wiki/Brownian_motion</a>). A general SDE, which represents all the required processes and more, can be written as</p>
+<p><span class="math display">\[dX_t = a(X_t,t)dt + b(X_t,t)dW_t\]</span> <span class="math display">\[X_0 = x_0\]</span> where, imprecisely speaking, <span class="math inline">\(dt\)</span> is the “infinitesimal time variation” and <span class="math inline">\(dW_t\)</span> is the “infinitesimal variation of the browian motion” and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are functions of the process itself and of time. If the function <span class="math inline">\(b\)</span> is 0, then we have the case of (non stochastic) “Ordinary Differential Equations” of the form <span class="math display">\[\frac{dX_t}{dt} = a(X_t,t)\]</span> <span class="math display">\[X_0 = x_0\]</span> The problem here is, of course, to compute the process <span class="math inline">\(X_t\)</span> at any time value starting from the stochastic differential equations that defines it. While sometimes it is possible, starting from the functions <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, to compute an exact solution using the mathematical field of <em>Stochastic calculus</em> and <em>Ito Formula</em>, it is usually necessary to adopt numerical computation methods, as the Euler-Maruyama method which has been suggested. The implementation of the task focuses exactly on these methods.</p>
+</div>
+<div id="implementation" class="section level2">
+<h2>Implementation</h2>
+<div id="general-considerations-and-final-result" class="section level3">
+<h3>General considerations and final result</h3>
+<p>Considering also the optional parts of the task, the best solution was to allow the user to input the following information:</p>
+<ul>
+<li>The function <span class="math inline">\(a(X,t)\)</span> and <span class="math inline">\(b(X,t)\)</span> defining the SDE</li>
+<li>The numerical method to use: in our case, it was implemented the Euler-Maruyama, the Runge-Kutta, and the Heun method (see <a href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_method_(SDE)" class="uri">https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_method_(SDE)</a>).</li>
+<li>The time step to use for the numeric methods</li>
+<li>The time range where the solution <span class="math inline">\(X_t\)</span> must be computed</li>
+<li>The initial value of <span class="math inline">\(X\)</span></li>
+<li>Wether the user want to <strong>fix a random seed</strong>, to ensure that the generated random numbers are the same (this is useful if one wants to compare different methods on the same equation).</li>
+</ul>
+<p>The implementation allows the user to input all this information, and then produce an animation showing the numerical solution: here follows the tool (please remember that <span class="math inline">\(X\)</span> must be a capital letter and <span class="math inline">\(t\)</span> a lowercase letter, to explicitly wwite multiplications with *. If you make a mistake and the tool is stuck, you can reload the page). You can start right now! Here follows also explanations, examples and the source code</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function Plotter</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    canvas {
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <label for="useFixedSeed">Use Fixed Seed for Random Numbers: </label>
+    <input type="checkbox" id="useFixedSeed">
+  </div>
+  <div>
+    <label for="randomSeedInput">Random Seed (used only if you check previous box): </label>
+    <input type="number" id="randomSeedInput" step="1" value="28032000">
+  </div>
+  <div>
+    <label for="functionAInput">Function a(X,t): </label>
+    <input type="text" id="functionAInput" placeholder="e.g., X*t + Math.sin(t)">
+  </div>
+  <div>
+    <label for="functionBInput">Function b(X,t): </label>
+    <input type="text" id="functionBInput" placeholder="e.g., X*t + Math.cos(t)">
+  </div>
+  <div>
+    <label for="timeStepInput">Time Step for Integration (seconds): </label>
+    <input type="number" id="timeStepInput" step="0.1" value="0.1">
+  </div>
+  <div>
+    <label for="timeRangeInput">Time Range (seconds): </label>
+    <input type="number" id="timeRangeInput" step="1" value="10">
+  </div>
+  <div>
+    <label for="initialValueInput">Initial Value of X: </label>
+    <input type="number" id="initialValueInput" step="any" value="0">
+  </div>
+  <div>
+    <label for="integrationMethod">Integration Method: </label>
+    <select id="integrationMethod">
+      <option value="euler">Euler-Maruyama</option>
+      <option value="heun">Heun's Method</option>
+      <option value="runge-kutta">Runge-Kutta's Method</option>
+    </select>
+  </div>
+  <button onclick="plotSDE()">Plot SDE Solution</button>
+  <canvas id="plotCanvas" width="600" height="400"></canvas>
+
+<script>
+
+  function plotSDE() {
+    const rawFunctionAInput = document.getElementById('functionAInput').value;
+    const functionAInput = preprocessFunctionInput(rawFunctionAInput);
+    const functionA = createFunction(rawFunctionAInput);
+
+    const rawFunctionBInput = document.getElementById('functionBInput').value;
+    
+    const functionBInput = preprocessFunctionInput(rawFunctionBInput);
+    const functionB = createFunction(rawFunctionBInput);
+    
+
+    const timeStep = document.getElementById('timeStepInput').valueAsNumber;
+    const timeRange = document.getElementById('timeRangeInput').valueAsNumber;
+    const initialValue = document.getElementById('initialValueInput').valueAsNumber || 0;
+
+    const integrationMethod = document.getElementById('integrationMethod').value;
+    
+    const useFixedSeed = document.getElementById('useFixedSeed').checked;
+      let randomSeed;
+    if (useFixedSeed) {
+      randomSeed = document.getElementById('randomSeedInput').valueAsNumber || 28032000; 
+      Math.seedrandom(randomSeed); // Use the seedrandom library for consistent random numbers
+    }
+
+    const canvas = document.getElementById('plotCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Destroy existing chart instance
+    if (window.chartInstance) {
+      window.chartInstance.destroy();
+    }
+
+    // Initialize Chart.js
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [
+          {
+            label: 'X(t) Plot',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            data: [],
+          },
+        ],
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'linear',
+            position: 'bottom',
+          },
+          y: {
+            type: 'linear',
+            position: 'left',
+          },
+        },
+      },
+    });
+
+    // Animation parameters
+    const animationSteps = Math.ceil(timeRange / timeStep); // Adjust steps based on time range
+
+    // Initial conditions
+    let X = initialValue;
+
+    let frame = 0;
+
+    // Animate the plot using requestAnimationFrame
+    function animate() {
+      const t = frame * timeStep;
+
+      // Update chart data
+      chart.data.labels.push(t.toFixed(2));
+      chart.data.datasets[0].data.push({ x: t, y: X });
+
+      // Update and redraw the chart
+      chart.update();
+
+      // Integration methods
+      let dW;
+      let a;
+      let b;
+      
+ 
+      switch (integrationMethod) {
+        case 'euler':
+         
+          dW = randomNormal(0, Math.sqrt(timeStep));
+          Math.random(); // for consistency in RNG for different methods when the seed is fixed
+          X = X + functionA(X, t) * timeStep + functionB(X, t) * dW;
+          break;
+
+        case 'heun':
+          dW = randomNormal(0, Math.sqrt(timeStep));
+          let S;
+          S = Math.random();
+          if(S<0.5) {S = 1
+          }else {S = -1}
+          
+          const correction1 = timeStep*functionA(X,t) + (dW - S*Math.sqrt(timeStep))*functionB(X,t);
+          const correction2 = timeStep*functionA(X+correction1,t + timeStep) + (dW + S*Math.sqrt(timeStep))*functionB(X+correction1,t+timeStep);
+          
+          X = X + 0.5*(correction1 + correction2)
+          break;
+         case 'runge-kutta':
+           dW = randomNormal(0, Math.sqrt(timeStep));
+          Math.random();
+          // Predict X using Euler step
+          const predictedX = X + functionA(X, t) * timeStep + functionB(X, t) * dW;
+          const correction = X + functionA(X, t) * timeStep + functionB(X, t)*Math.sqrt(timeStep);
+
+          // Correct X 
+          X = predictedX + 0.5*(functionB(correction,t+timeStep) - functionB(X,t))*(Math.pow(dW, 2) - timeStep)/Math.sqrt(timeStep);
+          break;
+  
+        default:
+          // Default to Euler-Maruyama
+          dW = randomNormal(0, Math.sqrt(timeStep));
+          X = X + functionA(X, t) * timeStep + functionB(X, t) * dW;
+          break;
+      }
+
+      frame++;
+
+      if (frame <= animationSteps) {
+        // Continue animation
+        requestAnimationFrame(animate);
+      }
+    }
+
+    // Start animation
+    animate();
+
+    // Save the chart instance globally
+    window.chartInstance = chart;
+  }
+ // Function to generate normally distributed random numbers
+  function randomNormal(mean, stdDev) {
+    const u = Math.random();
+    const v = Math.random();
+    const z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+    return mean + stdDev * z;
+  }
+
+     function preprocessFunctionInput(input) {
+  // Replace '^' with '**' and convert common functions
+  const processedInput = input
+    .replace(/\^/g, '**')
+    .replace(/Sin\(/gi, 'Math.sin(')   // case-insensitive replacement for Sin
+    .replace(/Cos\(/gi, 'Math.cos(')   // case-insensitive replacement for Cos
+    .replace(/Tan\(/gi, 'Math.tan(')   // case-insensitive replacement for Tan
+    .replace(/Exp\(/gi, 'Math.exp(')   // case-insensitive replacement for Exp
+    .replace(/Log\(/gi, 'Math.log(')  // case-insensitive replacement for Log
+    .replace(/sqrt\(/gi,'Math.sqrt(') // case-insensitive replacement for Exp
+    .replace(/,/g, '.');   
+
+  return processedInput;
+}
+
+function createFunction(rawFunctionInput) {
+    const processedInput = preprocessFunctionInput(rawFunctionInput);
+    return new Function('X', 't', `return ${processedInput};`);
+  }
+</script>
+</body>
+</div>
+<div id="some-explanations-to-the-code" class="section level3">
+<h3>Some explanations to the code</h3>
+<p>As per instruction given during the course, we implemented from scratch the numerical methods, which in fact you can read the source code. Once the methods and the input part were taken care of, it was necessary to find a way to manage fixed random seeds, when necessary, and to implement the dynamical charting, so that it can change if the user inputs new parameters: this is done using the utilities in seedrandom.js and chart.js, using the same principles which we used in the C# and javascript implementation given in <a href="https://elapigastudy6.wordpress.com/2023/10/25/homework-%e2%84%963/">Homework 3</a>.</p>
+<p>The code has been written so that many modifications are possible: you can add more methods and modify the charting process.</p>
+</div>
+<div id="examples-more-examples-can-be-added" class="section level3">
+<h3>Examples (more examples can be added)</h3>
+<div id="arithmetic-brownian-motion" class="section level4">
+<h4><em>Arithmetic Brownian Motion</em></h4>
+<p>It is the process defined by the SDE <span class="math display">\[ dX_t = \mu dt + \sigma dB_t\]</span> where <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are constant numbers. It has the exact solution <span class="math inline">\(X_t = X_0 + \mu t + \sigma B_t\)</span>, so we expect to see fluctuations around the straight line <span class="math inline">\(X_t = X_0 + \mu t\)</span> Here is what the tool produces with the three methods (we fix the random seed for comparison, but you can also not fix it; for the next processes, we will only use Heun method, which is the most precise among the three). We fix <span class="math inline">\(\mu = 1, \sigma = 1, X_0 = 0\)</span>.</p>
+<div class="figure" style="text-align: center">
+<img src="Euler1.png" alt="Arithmetic brownian motion, you can read the parameters above each figure" width="33%" height="10%" /><img src="Heun1.png" alt="Arithmetic brownian motion, you can read the parameters above each figure" width="33%" height="10%" /><img src="RK1.png" alt="Arithmetic brownian motion, you can read the parameters above each figure" width="33%" height="10%" />
+<p class="caption">
+Arithmetic brownian motion, you can read the parameters above each figure
+</p>
+</div>
+<p>Exactly as expected, we observe fluctuations around the straight line! Moreover, as we fixed the random seed, you can see that the two methods produce more or less the same realization of the process.</p>
+</div>
+<div id="geometric-brownian-motion" class="section level4">
+<h4><em>Geometric Brownian Motion</em></h4>
+<p>It is the process defined by the SDE <span class="math display">\[ dX_t = \mu X_t dt + \sigma X_t dB_t\]</span>. It can be proved that (<a href="https://en.wikipedia.org/wiki/Geometric_Brownian_motion#Solving_the_SDE" class="uri">https://en.wikipedia.org/wiki/Geometric_Brownian_motion#Solving_the_SDE</a>) if <span class="math inline">\(\mu &gt; \frac{\sigma^2}{2}\)</span> the process goes to infinity, and that if <span class="math inline">\(\mu &lt; \frac{\sigma^2}{2}\)</span> it goes to 0. We show the results for <span class="math inline">\(\mu = 1.5, \sigma = 1\)</span> (so we expect the process to go to infinity) and <span class="math inline">\(\mu = 1.5, \sigma = 3\)</span> (so we expect the process to go to zero). We set <span class="math inline">\(X_0 = 0.01\)</span>. Here is the result:</p>
+<div class="figure" style="text-align: center">
+<img src="Geo1.png" alt="Geometric brownian motion" width="33%" height="10%" /><img src="Geo2.png" alt="Geometric brownian motion" width="33%" height="10%" />
+<p class="caption">
+Geometric brownian motion
+</p>
+</div>
+<p>Exactly as expected!</p>
+</div>
+<div id="cox-ingersson-ross-process" class="section level4">
+<h4><em>Cox-Ingersson-Ross Process</em></h4>
+<p>It is the process defined by the SDE <span class="math display">\[ dX_t = \mu (k - X_t) dt + \sigma \sqrt{X_t} dB_t\]</span>. It can be proved (<a href="https://en.wikipedia.org/wiki/Cox%E2%80%93Ingersoll%E2%80%93Ross_model" class="uri">https://en.wikipedia.org/wiki/Cox%E2%80%93Ingersoll%E2%80%93Ross_model</a>) that the process fluctuates around <span class="math inline">\(k\)</span>, that the larger is <span class="math inline">\(\sigma\)</span> the larger the fluctuations, and that the larger <span class="math inline">\(\mu\)</span> the faster the process will be attracted by <span class="math inline">\(k\)</span>. We show the results for <span class="math inline">\(\mu = 2, k = 10, \sigma = 1\)</span> and <span class="math inline">\(\mu = 4, k = 12, \sigma = 2\)</span>. We start from <span class="math inline">\(X_0 = 5\)</span>, over a time range of 20 seconds:</p>
+<div class="figure" style="text-align: center">
+<img src="COX.png" alt="Cox-Ingersson-Ross Process" width="100%" height="100%" />
+<p class="caption">
+Cox-Ingersson-Ross Process
+</p>
+</div>
+<p>Again, as expected. Note in particular how the process fluctuates around <span class="math inline">\(k = 10\)</span> in the first panel and around <span class="math inline">\(k = 12\)</span> in the second</p>
+</div>
+</div>
+<div id="source-code" class="section level3">
+<h3>Source code</h3>
+<p>Here follows the source code for the tool: you can save it as an html file and open it into your browser, obtaining the same tool as above</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Function Plotter&lt;/title&gt;
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.1.0/math.min.js&quot;&gt;&lt;/script&gt;
+
+  &lt;style&gt;
+    canvas {
+      border: 1px solid #ddd;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;useFixedSeed&quot;&gt;Use Fixed Seed for Random Numbers: &lt;/label&gt;
+    &lt;input type=&quot;checkbox&quot; id=&quot;useFixedSeed&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;randomSeedInput&quot;&gt;Random Seed (used only if you check previous box): &lt;/label&gt;
+    &lt;input type=&quot;number&quot; id=&quot;randomSeedInput&quot; step=&quot;1&quot; value=&quot;28032000&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;functionAInput&quot;&gt;Function a(X,t): &lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;functionAInput&quot; placeholder=&quot;e.g., X*t + Math.sin(t)&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;functionBInput&quot;&gt;Function b(X,t): &lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;functionBInput&quot; placeholder=&quot;e.g., X*t + Math.cos(t)&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;timeStepInput&quot;&gt;Time Step for Integration (seconds): &lt;/label&gt;
+    &lt;input type=&quot;number&quot; id=&quot;timeStepInput&quot; step=&quot;0.1&quot; value=&quot;0.1&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;timeRangeInput&quot;&gt;Time Range (seconds): &lt;/label&gt;
+    &lt;input type=&quot;number&quot; id=&quot;timeRangeInput&quot; step=&quot;1&quot; value=&quot;10&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;initialValueInput&quot;&gt;Initial Value of X: &lt;/label&gt;
+    &lt;input type=&quot;number&quot; id=&quot;initialValueInput&quot; step=&quot;any&quot; value=&quot;0&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;integrationMethod&quot;&gt;Integration Method: &lt;/label&gt;
+    &lt;select id=&quot;integrationMethod&quot;&gt;
+      &lt;option value=&quot;euler&quot;&gt;Euler-Maruyama&lt;/option&gt;
+      &lt;option value=&quot;heun&quot;&gt;Heun&#39;s Method&lt;/option&gt;
+      &lt;option value=&quot;runge-kutta&quot;&gt;Runge-Kutta&#39;s Method&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;button onclick=&quot;plotSDE()&quot;&gt;Plot SDE Solution&lt;/button&gt;
+  &lt;canvas id=&quot;plotCanvas&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+
+  function plotSDE() {
+    const rawFunctionAInput = document.getElementById(&#39;functionAInput&#39;).value;
+    const functionAInput = preprocessFunctionInput(rawFunctionAInput);
+    const functionA = createFunction(rawFunctionAInput);
+
+    const rawFunctionBInput = document.getElementById(&#39;functionBInput&#39;).value;
+    
+    const functionBInput = preprocessFunctionInput(rawFunctionBInput);
+    const functionB = createFunction(rawFunctionBInput);
+    
+
+    const timeStep = document.getElementById(&#39;timeStepInput&#39;).valueAsNumber;
+    const timeRange = document.getElementById(&#39;timeRangeInput&#39;).valueAsNumber;
+    const initialValue = document.getElementById(&#39;initialValueInput&#39;).valueAsNumber || 0;
+
+    const integrationMethod = document.getElementById(&#39;integrationMethod&#39;).value;
+    
+    const useFixedSeed = document.getElementById(&#39;useFixedSeed&#39;).checked;
+      let randomSeed;
+    if (useFixedSeed) {
+      randomSeed = document.getElementById(&#39;randomSeedInput&#39;).valueAsNumber || 28032000; 
+      Math.seedrandom(randomSeed); // Use the seedrandom library for consistent random numbers
+    }
+
+    const canvas = document.getElementById(&#39;plotCanvas&#39;);
+    const ctx = canvas.getContext(&#39;2d&#39;);
+
+    // Destroy existing chart instance
+    if (window.chartInstance) {
+      window.chartInstance.destroy();
+    }
+
+    // Initialize Chart.js
+    const chart = new Chart(ctx, {
+      type: &#39;line&#39;,
+      data: {
+        labels: [],
+        datasets: [
+          {
+            label: &#39;X(t) Plot&#39;,
+            borderColor: &#39;rgba(75, 192, 192, 1)&#39;,
+            data: [],
+          },
+        ],
+      },
+      options: {
+        scales: {
+          x: {
+            type: &#39;linear&#39;,
+            position: &#39;bottom&#39;,
+          },
+          y: {
+            type: &#39;linear&#39;,
+            position: &#39;left&#39;,
+          },
+        },
+      },
+    });
+
+    // Animation parameters
+    const animationSteps = Math.ceil(timeRange / timeStep); // Adjust steps based on time range
+
+    // Initial conditions
+    let X = initialValue;
+
+    let frame = 0;
+
+    // Animate the plot using requestAnimationFrame
+    function animate() {
+      const t = frame * timeStep;
+
+      // Update chart data
+      chart.data.labels.push(t.toFixed(2));
+      chart.data.datasets[0].data.push({ x: t, y: X });
+
+      // Update and redraw the chart
+      chart.update();
+
+      // Integration methods
+      let dW;
+      let a;
+      let b;
+      
+ 
+      switch (integrationMethod) {
+        case &#39;euler&#39;:
+         
+          dW = randomNormal(0, Math.sqrt(timeStep));
+          Math.random(); // for consistency in RNG for different methods when the seed is fixed
+          X = X + functionA(X, t) * timeStep + functionB(X, t) * dW;
+          break;
+
+        case &#39;heun&#39;:
+          dW = randomNormal(0, Math.sqrt(timeStep));
+          let S;
+          S = Math.random();
+          if(S&lt;0.5) {S = 1
+          }else {S = -1}
+          
+          const correction1 = timeStep*functionA(X,t) + (dW - S*Math.sqrt(timeStep))*functionB(X,t);
+          const correction2 = timeStep*functionA(X+correction1,t + timeStep) + (dW + S*Math.sqrt(timeStep))*functionB(X+correction1,t+timeStep);
+          
+          X = X + 0.5*(correction1 + correction2)
+          break;
+         case &#39;runge-kutta&#39;:
+           dW = randomNormal(0, Math.sqrt(timeStep));
+          Math.random();
+          // Predict X using Euler step
+          const predictedX = X + functionA(X, t) * timeStep + functionB(X, t) * dW;
+          const correction = X + functionA(X, t) * timeStep + functionB(X, t)*Math.sqrt(timeStep);
+
+          // Correct X 
+          X = predictedX + 0.5*(functionB(correction,t+timeStep) - functionB(X,t))*(Math.pow(dW, 2) - timeStep)/Math.sqrt(timeStep);
+          break;
+  
+        default:
+          // Default to Euler-Maruyama
+          dW = randomNormal(0, Math.sqrt(timeStep));
+          X = X + functionA(X, t) * timeStep + functionB(X, t) * dW;
+          break;
+      }
+
+      frame++;
+
+      if (frame &lt;= animationSteps) {
+        // Continue animation
+        requestAnimationFrame(animate);
+      }
+    }
+
+    // Start animation
+    animate();
+
+    // Save the chart instance globally
+    window.chartInstance = chart;
+  }
+ // Function to generate normally distributed random numbers
+  function randomNormal(mean, stdDev) {
+    const u = Math.random();
+    const v = Math.random();
+    const z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+    return mean + stdDev * z;
+  }
+
+     function preprocessFunctionInput(input) {
+  // Replace &#39;^&#39; with &#39;**&#39; and convert common functions
+  const processedInput = input
+    .replace(/\^/g, &#39;**&#39;)
+    .replace(/Sin\(/gi, &#39;Math.sin(&#39;)   // case-insensitive replacement for Sin
+    .replace(/Cos\(/gi, &#39;Math.cos(&#39;)   // case-insensitive replacement for Cos
+    .replace(/Tan\(/gi, &#39;Math.tan(&#39;)   // case-insensitive replacement for Tan
+    .replace(/Exp\(/gi, &#39;Math.exp(&#39;)   // case-insensitive replacement for Exp
+    .replace(/Log\(/gi, &#39;Math.log(&#39;)  // case-insensitive replacement for Log
+    .replace(/sqrt\(/gi,&#39;Math.sqrt(&#39;) // case-insensitive replacement for Exp
+    .replace(/,/g, &#39;.&#39;);   
+
+  return processedInput;
+}
+
+function createFunction(rawFunctionInput) {
+    const processedInput = preprocessFunctionInput(rawFunctionInput);
+    return new Function(&#39;X&#39;, &#39;t&#39;, `return ${processedInput};`);
+  }
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div id="explanation-to-the-code-and-some-example-processes" class="section level3">
+<h3>Explanation to the code and some example processes</h3>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
